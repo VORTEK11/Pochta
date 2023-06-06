@@ -1,0 +1,56 @@
+﻿<Window x:Class="MailClient.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Mail Client" Height="Auto" Width="Auto" SizeToContent="WidthAndHeight">
+    <Grid>
+        <!-- Авторизация на почте -->
+        <StackPanel>
+            <TextBlock Text="Авторизация на почте" FontSize="20" Margin="10"/>
+            <TextBox x:Name="EmailTextBox" Margin="10"/>
+            <PasswordBox x:Name="PasswordBox" Margin="10"/>
+            <Button Content="Войти" Click="LoginButton_Click" Margin="10"/>
+        </StackPanel>
+
+        <!-- Окно с папками -->
+        <StackPanel x:Name="FoldersPanel" Visibility="Collapsed">
+            <TextBlock Text="Папки" FontSize="20" Margin="10"/>
+            <ListBox x:Name="FoldersListBox" SelectionChanged="FoldersListBox_SelectionChanged" Margin="10"/>
+        </StackPanel>
+
+        <!-- Окно с сообщениями -->
+        <StackPanel x:Name="MessagesPanel" Visibility="Collapsed">
+            <TextBlock Text="Сообщения" FontSize="20" Margin="10"/>
+            <DataGrid x:Name="MessagesGrid" AutoGenerateColumns="False" Margin="10">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Отправитель" Binding="{Binding Sender}" />
+                    <DataGridTextColumn Header="Тема" Binding="{Binding Subject}" />
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
+
+        <!-- Окно с просмотром сообщения -->
+        <StackPanel x:Name="MessageViewPanel" Visibility="Collapsed">
+            <TextBlock Text="Просмотр сообщения" FontSize="20" Margin="10"/>
+            <TextBlock Text="Отправитель:"/>
+            <TextBlock x:Name="SenderTextBlock" Margin="10"/>
+            <TextBlock Text="Получатель:"/>
+            <TextBlock x:Name="RecipientTextBlock" Margin="10"/>
+            <TextBlock Text="Тема:"/>
+            <TextBlock x:Name="SubjectTextBlock" Margin="10"/>
+            <TextBlock Text="Содержимое:"/>
+            <TextBlock x:Name="ContentTextBlock" Margin="10"/>
+        </StackPanel>
+
+        <!-- Окно написания письма -->
+        <StackPanel x:Name="ComposePanel" Visibility="Collapsed">
+            <TextBlock Text="Новое письмо" FontSize="20" Margin="10"/>
+            <TextBlock Text="Получатель:"/>
+            <TextBox x:Name="RecipientTextBox" Margin="10"/>
+            <TextBlock Text="Тема:"/>
+            <TextBox x:Name="SubjectTextBox" Margin="10"/>
+            <TextBlock Text="Содержимое:"/>
+            <TextBox x:Name="ContentTextBox" Margin="10" Height="200"/>
+            <Button Content="Отправить" Click="SendButton_Click" Margin="10"/>
+        </StackPanel>
+    </Grid>
+</Window>
